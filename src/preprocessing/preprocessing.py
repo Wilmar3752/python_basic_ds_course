@@ -1,5 +1,6 @@
 import pandas as pd
-from src.packages.utils import eliminar_tildes
+import numpy as np
+from src.packages.utils import eliminar_tildes, contaminar_con_na
 
 def get_bronze_data():
     '''
@@ -32,6 +33,7 @@ def create_new_columns(data):
     data['vehicle_brand'] = data['product'].str.split(" ").str[0]
     data['vehicle_line'] = data['product'].str.split(" ").str[1]
     data['brand_line'] = data['vehicle_brand'] + "-" + data['vehicle_line']
+    data['antiguedad'] = data['_created'].dt.year - data['years']
     return data
 
 def clean_text_column(data):
@@ -47,6 +49,7 @@ def clean_text_column(data):
         data[col] = data[col].apply(eliminar_tildes)
     return data
 
+
 def main():
     print("Starting preprocessing...")
     data_bronze = get_bronze_data()
@@ -54,5 +57,6 @@ def main():
     data_gold = clean_date_column(data_bronze)
     data_gold = create_new_columns(data_gold)
     data_gold = clean_text_column(data_gold)
+    data_gold = contaminar_con_na(data_gold) ## Warning!!: This is not a good practice, it is just for the example
     print("Data gold created")
     write_gold_data(data_gold)
