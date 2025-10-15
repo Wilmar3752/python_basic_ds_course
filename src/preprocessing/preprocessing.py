@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from src.packages.utils import eliminar_tildes, contaminar_con_na
 
 def get_bronze_data():

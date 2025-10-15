@@ -16,6 +16,7 @@ statsmodels>=0.14.0
 
 # Machine Learning básico
 scikit-learn>=1.3.0
+feature-engine==1.9.3
 
 # Jupyter Notebook (para análisis interactivo)
 jupyter>=1.0.0

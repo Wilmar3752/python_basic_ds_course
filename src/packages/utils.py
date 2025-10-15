@@ -1,4 +1,5 @@
 import unicodedata
+import numpy as np
 
 def maximo(lista):
     max_val = lista[0]
