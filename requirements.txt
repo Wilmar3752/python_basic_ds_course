@@ -27,4 +27,7 @@ ipykernel>=6.25.0
 # Utilidades adicionales
 openpyxl>=3.1.0  # Para leer archivos Excel
 
+# optimización de hiperparametros
+optuna==4.5.0
+
 
